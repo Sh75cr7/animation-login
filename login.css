@@ -1,0 +1,180 @@
+@property --hue {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+div {
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+}
+.cont {
+  --clr: #91cfe5;
+  --clr: hsl(var(--hue) 50% 50%);
+  color: var(--clr);
+  filter: drop-shadow(0 0 2vmin currentcolor);
+  animation: clr-chg infinite 6s linear;
+  margin-right: 50px;
+}
+@keyframes clr-chg {
+  from {
+    --hue: 0deg;
+  }
+  to {
+    --hue: 360deg;
+  }
+}
+.box,
+.box-inner {
+  --ang: 45deg;
+  width: 40vmin;
+  aspect-ratio: 1;
+  position: relative;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5vmin,
+    var(--clr) 5vmin 10vmin
+  );
+  &::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background-image: repeating-linear-gradient(
+      var(--ang),
+      transparent,
+      transparent 5vmin,
+      var(--clr) 5vmin 10vmin
+    );
+  }
+  &:after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background-image: repeating-linear-gradient(
+      var(--ang),
+      transparent,
+      transparent 5vmin,
+      var(--clr) 5vmin 10vmin
+    );
+  }
+  &::before {
+    transform-origin: bottom left;
+    rotate: x 90deg;
+  }
+  &::after {
+    transform-origin: top left;
+    rotate: x -90deg;
+    --ang: -45deg;
+  }
+}
+.box {
+  rotate: 1 1 1 45deg;
+  animation: rot infinite 6s linear;
+}
+@keyframes rot {
+  to {
+    transform: rotatex(180deg) rotatey(180deg) rotatez(180deg);
+  }
+}
+.box-inner {
+  position: absolute;
+  translate: 0 0 -40vmin;
+  rotate: 1 1 0 180deg;
+}
+body {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #888888;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  background-image: url(images/2.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+.sub-container {
+  width: 70%;
+  height: 75vh;
+  margin-left: 15%;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 3px 3px 50px #e0dcdc;
+  background-image: url(images/1.jpg);
+  background-position: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.left-container {
+  width: 100%;
+}
+.left {
+  width: 40%;
+  margin-top: 65px;
+  margin-left: 70px;
+}
+.login {
+  font-size: 18px;
+}
+.a-heading {
+  margin-top: 25px;
+  color: #29c5f6;
+}
+input {
+  display: block;
+  width: 90%;
+  margin-bottom: 25px;
+  padding: 7px;
+  font-size: 18px;
+  outline: none;
+}
+.f-password {
+  margin: 25px;
+  cursor: pointer;
+  color: #29c5f6;
+}
+.f-password:hover {
+  color: #888888;
+}
+.s-button {
+  border: none;
+  width: 95%;
+  padding: 10px;
+  background-color: #29c5f6;
+  color: white;
+  margin-bottom: 25px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.s-button:hover {
+  background-color: #888888;
+}
+.t-button {
+  font-size: 18px;
+  color: #29c5f6;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.t-button:hover {
+  color: #888888;
+}
+.right-container {
+  width: 100%;
+  display: none;
+}
+.right {
+  width: 40%;
+  margin-top: 65px;
+  margin-left: 70px;
+}
+.n-new {
+  font-size: 18px;
+}
